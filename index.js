@@ -2,21 +2,23 @@ function getComputerChoice() {
      const random = Math.random();
      if (random < 0.33) return "rock";
      else if (random < 0.66) return "paper";
-     else return "scissor";
+     else return "scissors";
 }
 
 function getHumanChoice() {
-     const input = prompt("Enter your choice (rock, paper, scissor):").toLowerCase();
-     // FIXME - Fix the algorithm using basic if,else
-     // [x] Done
-     if (input === `rock`) {
-          return `rock`;
-     } else if (input === `paper`) {
-          return  `paper`;
-     } else if (input === `scissor`) {
-          return `scissor`
-     } else {
-          console.log(`Not Valid!`);
+     while (true) {
+          const input = prompt("Masukkan Pilihanmu (rock, paper, scissors):").toLowerCase();
+
+          if (input === "rock" || input === "paper" || input === "scissors") {
+               return input;
+          }
+
+          if (input === null) {
+               console.log("cancelled");
+               return null;
+          }
+
+          console.log("Not Valid! Try again. ");
      }
 }
 
@@ -39,9 +41,9 @@ function playGame() {
           }
 
           if (
-               (human === "rock" && computer === "scissor") ||
+               (human === "rock" && computer === "scissors") ||
                (human === "paper" && computer === "rock") ||
-               (human === "scissor" && computer === "paper")
+               (human === "scissors" && computer === "paper")
           ) {
                console.log("You win the round!");
                return "win";
